@@ -1,0 +1,16 @@
+[
+{
+  "modid": "exnihiloadastra",
+  "name": "Ex Nihilo Ad Astra",
+  "description": "Ex Nihilo Ad Astra is a new take of Ex Nihilo for 1.12 trying to reduce the grind and make it more usable for pack developers.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Irgendwer01"],
+  "credits": "BloodWorkXGaming for Ex Nihilo Creatio, Insaneau for Ex Nihilo Adscensio and Erasmus_Crowley for the original Ex Nihilo.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
