@@ -1,15 +1,15 @@
 package com.irgendwer.exnihiloadastra.API;
 
-import com.irgendwer.exnihiloadastra.API.Tools.HammerBase;
 import net.minecraft.item.Item;
+
+import java.util.ArrayList;
 
 public class ExNihiloAPI {
 
-    public static Item hammer;
-    public static int color;
-
+    public static ArrayList<Item> toolHammer = new ArrayList<>();
+    public static ArrayList<Integer> colorHammer = new ArrayList<>();
     public static void registerHammer(String name, int color, int durability) {
-        hammer = new HammerBase(name, durability);
-        ExNihiloAPI.color = color;
+        toolHammer.add(new HammerBase(name, durability));
+        colorHammer.add(color);
     }
 }
