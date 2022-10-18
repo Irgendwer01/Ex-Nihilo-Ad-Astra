@@ -5,11 +5,8 @@ import net.minecraft.item.Item;
 import java.util.ArrayList;
 
 public class ExNihiloAPI {
-
-    public static ArrayList<Item> toolHammer = new ArrayList<>();
-    public static ArrayList<Integer> colorHammer = new ArrayList<>();
+    public static ArrayList<Item> hammerList = new ArrayList<>();
     public static void registerHammer(String name, int color, int durability) {
-        toolHammer.add(new HammerBase(name, durability));
-        colorHammer.add(color);
+        hammerList.add(new HammerBase(name, durability, color));
     }
 }
