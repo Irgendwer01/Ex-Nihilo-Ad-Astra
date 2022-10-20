@@ -1,7 +1,9 @@
 package com.irgendwer.exnihiloadastra;
 
+import com.irgendwer.exnihiloadastra.common.handlers.CrookHandler;
 import com.irgendwer.exnihiloadastra.common.items.ModItems;
 import com.irgendwer.exnihiloadastra.proxy.CommonProxy;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -20,7 +22,9 @@ public class Exnihiloadastra {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.registerTools();
+        ModItems.registerItems();
         proxy.preInit();
+        MinecraftForge.EVENT_BUS.register(new CrookHandler());
     }
 
     @EventHandler
