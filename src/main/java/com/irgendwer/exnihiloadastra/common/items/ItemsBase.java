@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 
@@ -26,7 +27,7 @@ public class ItemsBase extends Item {
 
     public static void registerRender() {
         for (Items items : Items.values())
-            ModelLoader.setCustomModelResourceLocation(ModItems.items, items.getMetadata(), new ModelResourceLocation("exnihiloadastra:items", "type=" + items.getName()));
+            ModelLoader.setCustomModelResourceLocation(ModItems.items, items.ordinal(), new ModelResourceLocation("exnihiloadastra:items", "type=" + items.getName()));
     }
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
@@ -38,26 +39,19 @@ public class ItemsBase extends Item {
     }
 
 
-    public enum Items {
-        SILKWORM("silkworm", 0);
+    public enum Items implements IStringSerializable {
+        SILKWORM("silkworm");
 
         private final String name;
-        private final int metadata;
         public static final Items[] values = values();
 
-        Items(String name, int metadata) {
+        Items(String name) {
             this.name = name;
-            this.metadata = metadata;
         }
 
-        @Nonnull
+        @Override
         public String getName() {
             return this.name;
-        }
-
-        @Nonnull
-        public Integer getMetadata() {
-            return this.metadata;
         }
     }
 }

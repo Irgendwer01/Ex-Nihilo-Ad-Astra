@@ -1,5 +1,6 @@
 package com.irgendwer.exnihiloadastra.proxy;
 
+import com.irgendwer.exnihiloadastra.common.blocks.BlockBaseFalling;
 import com.irgendwer.exnihiloadastra.common.items.ItemsBase;
 import com.irgendwer.exnihiloadastra.common.items.PebbleBase;
 import com.irgendwer.exnihiloadastra.common.items.tools.CrookBase;
@@ -17,6 +18,7 @@ public class ClientProxy extends CommonProxy {
         CrookBase.registerRender();
         PebbleBase.registerRender();
         ItemsBase.registerRender();
+        BlockBaseFalling.registerRender();
     }
 
     @Override

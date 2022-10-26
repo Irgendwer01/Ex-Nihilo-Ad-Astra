@@ -21,12 +21,12 @@ public class PebbleBase extends Item {
     @Override
     @Nonnull
     public String getTranslationKey(@Nonnull ItemStack stack) {
-        return String.format("item.%s_pebble", Pebbles.values[stack.getItemDamage()].getName());
+        return String.format("item.%s_pebble", Pebbles.values[stack.getItemDamage()].name);
     }
 
         public static void registerRender() {
             for (Pebbles pebbles : Pebbles.values())
-            ModelLoader.setCustomModelResourceLocation(ModItems.pebbles, pebbles.getMetadata(), new ModelResourceLocation("exnihiloadastra:pebbles", "type=" + pebbles.getName()));
+            ModelLoader.setCustomModelResourceLocation(ModItems.pebbles, pebbles.ordinal(), new ModelResourceLocation("exnihiloadastra:pebbles", "type=" + pebbles.getName()));
         }
 
     @Override
@@ -39,29 +39,22 @@ public class PebbleBase extends Item {
     }
 
 
-    public enum Pebbles {
-        STONE("stone", 0),
-        GRANITE("granite", 1),
-        ANDESITE("andesite", 2),
-        DIORITE("diorite", 3);
+    public enum Pebbles implements IStringSerializable {
+        STONE("stone"),
+        GRANITE("granite"),
+        ANDESITE("andesite"),
+        DIORITE("diorite");
 
         private final String name;
-        private final int metadata;
         public static final Pebbles[] values = values();
 
-        Pebbles(String name, int metadata) {
+        Pebbles(String name) {
             this.name = name;
-            this.metadata = metadata;
         }
 
-        @Nonnull
+        @Override
         public String getName() {
             return this.name;
-        }
-
-        @Nonnull
-        public Integer getMetadata() {
-            return this.metadata;
         }
     }
 }

@@ -1,4 +1,5 @@
 buildscript {
+    ext.kotlin_version = '1.2.51'
     repositories {
         maven { 
             // url = 'https://maven.cleanroommc.com'
@@ -7,16 +8,19 @@ buildscript {
         maven { 
             url = 'https://repo.spongepowered.org/maven' 
         }
+        mavenCentral()
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'
         if (project.use_mixins.toBoolean()) {
             classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
         }
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'kotlin'
 
 if (project.use_mixins.toBoolean()) {
     apply plugin: 'org.spongepowered.mixin'
@@ -35,6 +39,8 @@ compileJava {
 configurations {
     embed
     implementation.extendsFrom(embed)
+    shade
+    compile.extendsFrom(shade)
 }
 
 minecraft {
@@ -61,6 +67,7 @@ repositories {
     maven {
         url = 'https://repo.spongepowered.org/maven'
     }
+    mavenCentral()
 }
 
 dependencies {
@@ -71,7 +78,12 @@ dependencies {
     if (project.use_mixins.toBoolean()) {
         deobfCompile 'zone.rong:mixinbooter:5.0'
     }
-    
+
+    shade "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    shade "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"
+    shade "org.jetbrains:annotations:16.0.3"
+    shade "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1"
+    shade "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.3.1"
 }
 
 sourceSets {

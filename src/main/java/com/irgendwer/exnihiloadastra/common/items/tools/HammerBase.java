@@ -8,7 +8,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
 
 import java.util.Collections;
 
@@ -36,4 +35,6 @@ public class HammerBase extends ItemTool {
         for (Item hammer : ModItems.hammerList)
             Minecraft.getMinecraft().getItemColors().registerItemColorHandler(ITEM_COLOR, hammer);
     }
+
+
 }
